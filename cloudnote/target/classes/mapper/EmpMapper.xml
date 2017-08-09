@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tedu.cloudnote.dao.EmpDao">
+<!-- useGeneratedKeys:使用自动生成主键  keyProperty：将自动生成的主键值给谁 -->
+<insert id="save" parameterType="com.tedu.cloudnote.entity.Emp"
+useGeneratedKeys="true" keyProperty="no">
+	insert into t_emp (name)
+	values (#{name})
+</insert>
+
+<!-- oracle查询主键值  keyProperty：主键放入的地方   resultType:主键的类型
+ order：在执行插入语句之前(BEFORE)调用，在执行插入之后调用-->	
+
+	<!-- 执行select查询主序列值，然后放入到
+		Emp参数对象的no属性中，最后再执行insert -->
+<!-- 
+<insert id="oracleSave">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		select emp_seq.nextval from dual
+	</selectKey>
+	insert into t_emp (no,name)
+	values (#{no},#{name})
+</insert>
+ -->
+</mapper>
